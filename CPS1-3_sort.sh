@@ -4,10 +4,11 @@ readonly SOURCE="${1:-roms}"
 
 copy_from() {
 	local -r system="$1"
+	local -r dest_dir="${system^^}"
 
-	mkdir -p "$system"
+	mkdir -p "$dest_dir"
 	while IFS= read -r file; do
-		cp "$SOURCE/$file" "$system"
+		cp "$SOURCE/$file" "$dest_dir"
 	done < "${system}.txt"
 }
 
